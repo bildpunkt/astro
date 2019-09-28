@@ -26,3 +26,11 @@ Route::get('/projects/{id}', 'ProjectsController@show')->name('projects.show');
 Route::get('/projects/{id}/edit', 'ProjectsController@edit')->name('projects.edit');
 Route::put('/projects/{id}/update', 'ProjectsController@update')->name('projects.update');
 Route::delete('/projects/{id}/destroy', 'ProjectsController@destroy')->name('projects.destroy');
+
+Route::get('/projects/{id}/issues', 'IssuesController@index')->name('issues.index');
+Route::get('/projects/{id}/issues/new', 'IssuesController@new')->name('Issues.new');
+Route::post('/projects/{id}/issues/create', 'IssuesController@create')->name('issues.create');
+Route::get('/projects/{id}/issues/{issue_id}', 'IssuesController@show')->name('issues.show');
+Route::get('/projects/{id}/issues/{issue_id}/edit', 'IssuesController@edit')->name('issues.edit');
+Route::put('/projects/{id}/issues/{issue_id}/update', 'IssuesController@update')->name('issues.update');
+Route::delete('/projects/{id}/issues/{issue_id}/destroy', 'IssuesController@destroy')->name('issues.destroy');
