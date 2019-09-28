@@ -23,7 +23,9 @@
                                     {{ $project->name }}
                                 </a>
                             </h5>
-                            <p>{{ $project->description }}</p>
+                            @if ($project->description)
+                                <p>{{ $project->description }}</p>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
