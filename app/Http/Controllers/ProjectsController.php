@@ -35,7 +35,7 @@ class ProjectsController extends Controller
 
         $project = Project::create($validatedData);
 
-        return redirect()->route('projects.show', $project->id)->with('success', 'Project successfully created!');
+        return redirect()->route('projects.show', $project->id)->with('status', 'Project successfully created!');
     }
 
     public function edit(int $id)
@@ -55,7 +55,7 @@ class ProjectsController extends Controller
 
         $project = Project::whereId($id)->update($validatedData);
 
-        return redirect()->route('projects.show', $id)->with('success', 'Project successfully updated!');
+        return redirect()->route('projects.show', $id)->with('status', 'Project successfully updated!');
     }
 
     public function show(int $id)
@@ -70,6 +70,6 @@ class ProjectsController extends Controller
         $project = Project::findOrFail($id);
         $project->delete();
 
-        return redirect()->route('projects.index')->with('success', 'Project successfully removed!');
+        return redirect()->route('projects.index')->with('status', 'Project successfully removed!');
     }
 }
