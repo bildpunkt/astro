@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectsController extends Controller
 {
@@ -21,12 +22,18 @@ class ProjectsController extends Controller
 
     public function new()
     {
-
+        return view('projects.new');
     }
 
     public function create(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
 
+        $project = Project::create($validatedData);
+
+        return redirect()->route('projects.index')->with('success', 'Project successfully created!');
     }
 
     public function edit(int $id)
