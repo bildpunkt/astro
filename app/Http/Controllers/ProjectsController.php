@@ -28,7 +28,9 @@ class ProjectsController extends Controller
     public function create(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'description' => 'nullable',
+            'url' => 'nullable'
         ]);
 
         $project = Project::create($validatedData);
@@ -38,12 +40,22 @@ class ProjectsController extends Controller
 
     public function edit(int $id)
     {
+        $project = Project::findOrFail($id);
 
+        return view('projects.edit', ['project' => $project]);
     }
 
     public function update(Request $request, int $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable',
+            'url' => 'nullable'
+        ]);
 
+        $project = Project::whereId($id)->update($validatedData);
+
+        return redirect()->route('projects.show', $id)->with('success', 'Project successfully updated!');
     }
 
     public function show(int $id)
