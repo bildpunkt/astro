@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
                 ->nullable(false);
             $table
                 ->text('description')
-                ->nullable(false);
+                ->nullable();
             $table
                 ->string('url')
                 ->default('');
