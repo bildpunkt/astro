@@ -35,7 +35,7 @@ class ProjectsController extends Controller
 
         $project = Project::create($validatedData);
 
-        return redirect()->route('projects.index')->with('success', 'Project successfully created!');
+        return redirect()->route('projects.show', $project->id)->with('success', 'Project successfully created!');
     }
 
     public function edit(int $id)
