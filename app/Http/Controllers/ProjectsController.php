@@ -48,7 +48,9 @@ class ProjectsController extends Controller
 
     public function show(int $id)
     {
+        $project = Project::findOrFail($id);
 
+        return view('projects.show', ['project' => $project]);
     }
 
     public function destroy(int $id)
