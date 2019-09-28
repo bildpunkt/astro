@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class IssuesController extends Controller
 {
@@ -11,9 +12,11 @@ class IssuesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(int $id)
     {
+        $project = Project::findOrFail($id);
 
+        return view('issues.index', ['project' => $project]);
     }
 
     public function new()
