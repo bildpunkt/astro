@@ -34,6 +34,12 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Project</button>
                     </form>
+
+                    <form method="POST" action="{{ route('projects.destroy', $project->id) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete Project</button>
+                    </form>
                 </div>
             </div>
         </div>
