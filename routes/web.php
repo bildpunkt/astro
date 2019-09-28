@@ -24,5 +24,5 @@ Route::get('/projects/new', 'ProjectsController@new')->name('projects.new');
 Route::post('/projects/create', 'ProjectsController@create')->name('projects.create');
 Route::get('/projects/{id}', 'ProjectsController@show')->name('projects.show');
 Route::get('/projects/{id}/edit', 'ProjectsController@edit')->name('projects.edit');
-Route::put('/projects/{id}/update', 'ProjectsController@update')->('projects.update');
-Route::delete('/projects/{id}/destroy', 'ProjectsController@destroy')->('projects.destroy');
+Route::put('/projects/{id}/update', 'ProjectsController@update')->name('projects.update');
+Route::delete('/projects/{id}/destroy', 'ProjectsController@destroy')->name('projects.destroy');
