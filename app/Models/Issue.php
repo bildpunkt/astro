@@ -8,16 +8,16 @@ class Issue extends Model
 {
     public function author()
     {
-        return $this->belongsTo('App/Models/User', 'author_id');
+        return $this->belongsTo('App\Models\User', 'author_id');
     }
 
     public function assignee()
     {
-        return $this->belongsTo('App/Models/User', 'assigned_to_id');
+        return $this->belongsTo('App\Models\User', 'assigned_to_id');
     }
 
     public function project()
     {
-        return $this->belongsTo('App/Models/Project');
+        return $this->belongsTo('App\Models\Project');
     }
 }
