@@ -38,14 +38,12 @@ class ProjectsController extends Controller
         return redirect()->route('projects.show', $project->id)->with('status', 'Project successfully created!');
     }
 
-    public function edit(int $id)
+    public function edit(Project $project)
     {
-        $project = Project::findOrFail($id);
-
         return view('projects.edit', ['project' => $project]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, Project $project)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
@@ -53,21 +51,18 @@ class ProjectsController extends Controller
             'url' => 'nullable'
         ]);
 
-        $project = Project::whereId($id)->update($validatedData);
+        Project::whereId($project->id)->update($validatedData);
 
-        return redirect()->route('projects.show', $id)->with('status', 'Project successfully updated!');
+        return redirect()->route('projects.show', $project->id)->with('status', 'Project successfully updated!');
     }
 
-    public function show(int $id)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
-
         return view('projects.show', ['project' => $project]);
     }
 
-    public function destroy(int $id)
+    public function destroy(Project $project)
     {
-        $project = Project::findOrFail($id);
         $project->delete();
 
         return redirect()->route('projects.index')->with('status', 'Project successfully removed!');
