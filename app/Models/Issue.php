@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
+    protected $fillable = ['subject', 'description', 'assigned_to_id', 'author_id', 'project_id'];
+
     public function author()
     {
         return $this->belongsTo('App\Models\User', 'author_id');
