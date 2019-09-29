@@ -15,22 +15,19 @@ class IssuesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(int $id)
+    public function index(Project $project)
     {
-        $project = Project::findOrFail($id);
-
         return view('issues.index', ['project' => $project]);
     }
 
-    public function new(int $id)
+    public function new(Project $project)
     {
-        $project = Project::findOrFail($id);
         $users = User::all();
 
         return view('issues.new', ['project' => $project, 'users' => $users]);
     }
 
-    public function create(Request $request, int $id)
+    public function create(Request $request, Project $project)
     {
         $validatedData = $request->validate([
             'subject' => 'required|max:255',
@@ -39,24 +36,21 @@ class IssuesController extends Controller
         ]);
 
         $validatedData['author_id'] = Auth::user()->id;
-        $validatedData['project_id'] = $id;
+        $validatedData['project_id'] = $project->id;
 
         $issue = Issue::create($validatedData);
 
-        return redirect()->route('issues.show', [$id, $issue->id])->with('status', 'Issue successfully created!');
+        return redirect()->route('issues.show', [$project->id, $issue->id])->with('status', 'Issue successfully created!');
     }
 
-    public function edit(int $id, int $issueId)
+    public function edit(Project $project, Issue $issue)
     {
         $users = User::all();
-        $issue = Issue::where('id', $issueId)
-                        ->where('project_id', $id)
-                        ->firstOrFail();
 
         return view('issues.edit', ['issue' => $issue, 'users' => $users]);
     }
 
-    public function update(Request $request, int $id, int $issueId)
+    public function update(Request $request, Project $project, Issue $issue)
     {
         $validatedData = $request->validate([
             'subject' => 'required|max:255',
@@ -64,29 +58,20 @@ class IssuesController extends Controller
             'assigned_to_id' => 'nullable'
         ]);
 
-        $issue = Issue::where('id', $issueId)
-                        ->where('project_id', $id)
-                        ->update($validatedData);
+        $issue->update($validatedData);
 
-        return redirect()->route('issues.show', [$id, $issueId])->with('status', 'Issue successfully updated!');
+        return redirect()->route('issues.show', [$project->id, $issue->id])->with('status', 'Issue successfully updated!');
     }
 
-    public function show(int $id, int $issueId)
+    public function show(Project $project, Issue $issue)
     {
-        $issue = Issue::where('id', $issueId)
-                        ->where('project_id', $id)
-                        ->firstOrFail();
-
-        return view('issues.show', ['issue' => $issue, 'projectId' => $id]);
+        return view('issues.show', ['issue' => $issue]);
     }
 
-    public function destroy(int $id, int $issueId)
+    public function destroy(Project $project, Issue $issue)
     {
-        $issue = Issue::where('id', $issueId)
-                        ->where('project_id', $id)
-                        ->firstOrFail();
         $issue->delete();
 
-        return redirect()->route('issues.index', $id)->with('status', 'Issue successfully removed!');
+        return redirect()->route('issues.index', $project->id)->with('status', 'Issue successfully removed!');
     }
 }

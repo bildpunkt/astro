@@ -27,13 +27,13 @@ Route::get('/projects/{project}/edit', 'ProjectsController@edit')->name('project
 Route::put('/projects/{project}/update', 'ProjectsController@update')->name('projects.update');
 Route::delete('/projects/{project}/destroy', 'ProjectsController@destroy')->name('projects.destroy');
 
-Route::get('/projects/{id}/issues', 'IssuesController@index')->name('issues.index');
-Route::get('/projects/{id}/issues/new', 'IssuesController@new')->name('issues.new');
-Route::post('/projects/{id}/issues/create', 'IssuesController@create')->name('issues.create');
-Route::get('/projects/{id}/issues/{issue_id}', 'IssuesController@show')->name('issues.show');
-Route::get('/projects/{id}/issues/{issue_id}/edit', 'IssuesController@edit')->name('issues.edit');
-Route::put('/projects/{id}/issues/{issue_id}/update', 'IssuesController@update')->name('issues.update');
-Route::delete('/projects/{id}/issues/{issue_id}/destroy', 'IssuesController@destroy')->name('issues.destroy');
+Route::get('/projects/{project}/issues', 'IssuesController@index')->name('issues.index');
+Route::get('/projects/{project}/issues/new', 'IssuesController@new')->name('issues.new');
+Route::post('/projects/{project}/issues/create', 'IssuesController@create')->name('issues.create');
+Route::get('/projects/{project}/issues/{issue}', 'IssuesController@show')->name('issues.show');
+Route::get('/projects/{project}/issues/{issue}/edit', 'IssuesController@edit')->name('issues.edit');
+Route::put('/projects/{project}/issues/{issue}/update', 'IssuesController@update')->name('issues.update');
+Route::delete('/projects/{project}/issues/{issue}/destroy', 'IssuesController@destroy')->name('issues.destroy');
 
 Route::get('/projects/{id}/milestones', 'MilestonesController@index')->name('milestones.index');
 Route::get('/projects/{id}/milestones/new', 'MilestonesController@new')->name('milestones.new');
