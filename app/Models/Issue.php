@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
-    protected $fillable = ['subject', 'description', 'assigned_to_id', 'author_id', 'project_id'];
+    protected $fillable = ['subject', 'description', 'assigned_to_id', 'author_id', 'project_id', 'milestone_id'];
 
     public function author()
     {
@@ -16,6 +16,11 @@ class Issue extends Model
     public function assignee()
     {
         return $this->belongsTo('App\Models\User', 'assigned_to_id');
+    }
+
+    public function milestone()
+    {
+        return $this->belongsTo('App\Models\Milestone');
     }
 
     public function project()
