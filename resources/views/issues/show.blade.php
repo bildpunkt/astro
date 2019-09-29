@@ -25,7 +25,7 @@
                         <p>{{ $issue->description }}</p>
                     @endif
 
-                    <a href="{{ route('issues.edit', [$project_id, $issue->id]) }}" class="btn btn-primary">Edit Issue</a>
+                    <a href="{{ route('issues.edit', [$projectId, $issue->id]) }}" class="btn btn-primary">Edit Issue</a>
                 </div>
             </div>
         </div>
