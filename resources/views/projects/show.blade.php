@@ -23,7 +23,7 @@
                         </p>
                     @endif
 
-                    <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-primary">Edit Project</a>
+                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-primary">Edit Project</a>
                 </div>
             </div>
         </div>

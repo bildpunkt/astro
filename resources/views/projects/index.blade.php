@@ -19,7 +19,7 @@
                     @foreach ($projects as $project)
                         <li class="list-group-item">
                             <h5>
-                                <a href="{{ route('projects.show', ['id' => $project->id]) }}">
+                                <a href="{{ route('projects.show', $project) }}">
                                     {{ $project->name }}
                                 </a>
                             </h5>
