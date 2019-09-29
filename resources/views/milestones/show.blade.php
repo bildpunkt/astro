@@ -17,6 +17,18 @@
                         <p>{{ $milestone->description }}</p>
                     @endif
 
+                    @if($milestone->issues)
+                        <ul class="list-group">
+                            @foreach ($milestone->issues as $issue)
+                                <li class="list-group-item">
+                                    <a href="{{ route('issues.show', [$issue->project, $issue]) }}">
+                                        {{ $issue->subject }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <a href="{{ route('milestones.edit', [$milestone->project, $milestone]) }}" class="btn btn-primary">Edit Milestone</a>
                 </div>
             </div>
