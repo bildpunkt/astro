@@ -34,7 +34,7 @@ class MilestonesController extends Controller
 
         $milestone = Milestone::create($validatedData);
 
-        return redirect()->route('milestones.index', $project)->with('status', 'Milestone successfully created!');
+        return redirect()->route('milestones.show', [$project->id, $milestone->id])->with('status', 'Milestone successfully created!');
     }
 
     public function edit(Project $project, Milestone $milestone)
