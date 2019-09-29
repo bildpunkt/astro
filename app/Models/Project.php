@@ -12,4 +12,9 @@ class Project extends Model
     {
         return $this->hasMany('App\Models\Issue');
     }
+
+    public function milestones()
+    {
+        return $this->hasMany('App\Models\Milestone');
+    }
 }
