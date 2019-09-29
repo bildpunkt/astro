@@ -35,10 +35,10 @@ Route::get('/projects/{project}/issues/{issue}/edit', 'IssuesController@edit')->
 Route::put('/projects/{project}/issues/{issue}/update', 'IssuesController@update')->name('issues.update');
 Route::delete('/projects/{project}/issues/{issue}/destroy', 'IssuesController@destroy')->name('issues.destroy');
 
-Route::get('/projects/{id}/milestones', 'MilestonesController@index')->name('milestones.index');
-Route::get('/projects/{id}/milestones/new', 'MilestonesController@new')->name('milestones.new');
-Route::post('/projects/{id}/milestones/create', 'MilestonesController@create')->name('milestones.create');
-Route::get('/projects/{id}/milestones/{milestone_id}', 'MilestonesController@show')->name('milestones.show');
-Route::get('/projects/{id}/milestones/{milestone_id}/edit', 'MilestonesController@edit')->name('milestones.edit');
-Route::put('/projects/{id}/milestones/{milestone_id}/update', 'MilestonesController@update')->name('milestones.update');
-Route::delete('/projects/{id}/milestones/{milestone_id}/destroy', 'MilestonesController@destroy')->name('milestones.destroy');
+Route::get('/projects/{project}/milestones', 'MilestonesController@index')->name('milestones.index');
+Route::get('/projects/{project}/milestones/new', 'MilestonesController@new')->name('milestones.new');
+Route::post('/projects/{project}/milestones/create', 'MilestonesController@create')->name('milestones.create');
+Route::get('/projects/{project}/milestones/{milestone}', 'MilestonesController@show')->name('milestones.show');
+Route::get('/projects/{project}/milestones/{milestone}/edit', 'MilestonesController@edit')->name('milestones.edit');
+Route::put('/projects/{project}/milestones/{milestone}/update', 'MilestonesController@update')->name('milestones.update');
+Route::delete('/projects/{project}/milestones/{milestone}/destroy', 'MilestonesController@destroy')->name('milestones.destroy');

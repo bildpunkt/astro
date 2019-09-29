@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\Milestone;
 
 class MilestonesController extends Controller
 {
@@ -11,37 +13,37 @@ class MilestonesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(int $id)
+    public function index(Project $project)
     {
 
     }
 
-    public function new(int $id)
+    public function new(Project $project)
     {
 
     }
 
-    public function create(Request $request, int $id)
+    public function create(Request $request, Project $project)
     {
 
     }
 
-    public function edit(int $id, int $milestoneId)
+    public function edit(Project $project, Milestone $milestone)
     {
 
     }
 
-    public function update(Request $request, int $id, int $milestoneId)
+    public function update(Request $request, Project $project, Milestone $milestone)
     {
 
     }
 
-    public function show(int $id, int $milestoneId)
+    public function show(Project $project, Milestone $milestone)
     {
 
     }
 
-    public function destroy(int $id, int $milestoneId)
+    public function destroy(Project $project, Milestone $milestone)
     {
 
     }
