@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('issues.update', [$issue->project->id, $issue->id]) }}">
+                    <form method="POST" action="{{ route('issues.update', [$issue->project, $issue]) }}">
                         @method('PUT')
                         @csrf
                         <div class="form-group">
@@ -39,7 +39,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Issue</button>
                     </form>
-                    <form method="POST" action="{{ route('issues.destroy', [$issue->project->id, $issue->id]) }}">
+                    <form method="POST" action="{{ route('issues.destroy', [$issue->project, $issue]) }}">
                         @method('DELETE')
                         @csrf
                         <button type="submit" class="btn btn-danger">Delete Issue</button>

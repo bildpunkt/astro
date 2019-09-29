@@ -13,12 +13,12 @@
                         </div>
                     @endif
 
-                    <a href="{{ route('issues.new', $project->id) }}" class="btn btn-primary">New Issue</a>
+                    <a href="{{ route('issues.new', $project) }}" class="btn btn-primary">New Issue</a>
                 </div>
                 <ul class="list-group list-group-flush">
                     @foreach ($project->issues as $issue)
                         <li class="list-group-item">
-                            <a href="{{ route('issues.show', ['id' => $project->id, 'issue_id' => $issue->id]) }}">
+                            <a href="{{ route('issues.show', [$project, $issue]) }}">
                                 {{ $issue->subject }}
                             </a>
                         </li>

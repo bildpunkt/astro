@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('issues.create', $project->id) }}">
+                    <form method="POST" action="{{ route('issues.create', $project) }}">
                         @csrf
                         <div class="form-group">
                             <label for="issueSubject">Subject:</label>
