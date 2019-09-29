@@ -32,7 +32,8 @@ class IssuesController extends Controller
         $validatedData = $request->validate([
             'subject' => 'required|max:255',
             'description' => 'nullable',
-            'assigned_to_id' => 'nullable'
+            'assigned_to_id' => 'nullable',
+            'milestone_id' => 'nullable'
         ]);
 
         $validatedData['author_id'] = Auth::user()->id;
@@ -55,7 +56,8 @@ class IssuesController extends Controller
         $validatedData = $request->validate([
             'subject' => 'required|max:255',
             'description' => 'nullable',
-            'assigned_to_id' => 'nullable'
+            'assigned_to_id' => 'nullable',
+            'milestone_id' => 'nullable'
         ]);
 
         $issue->update($validatedData);

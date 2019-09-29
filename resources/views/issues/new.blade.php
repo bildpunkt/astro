@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label for="issueAssignee">Assigned to:</label>
                             <select class="custom-select" name="assigned_to_id">
-                                <option selected>None</option>
+                                <option value="0" selected>None</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach

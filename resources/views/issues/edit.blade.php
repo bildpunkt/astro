@@ -37,6 +37,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issueMilestone">Milestone:</label>
+                            <select class="custom-select" name="milestone_id">
+                                <option value="0">None</option>
+                                @foreach ($issue->project->milestones as $milestone)
+                                    <option value="{{ $milestone->id }}" {{ optional($issue->milestone)->id == $milestone->id ? 'selected' : '' }}>{{ $milestone->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Edit Issue</button>
                     </form>
                     <form method="POST" action="{{ route('issues.destroy', [$issue->project, $issue]) }}">
