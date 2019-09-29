@@ -39,6 +39,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Issue</button>
                     </form>
+                    <form method="POST" action="{{ route('issues.destroy', [$issue->project->id, $issue->id]) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete Issue</button>
+                    </form>
                 </div>
             </div>
         </div>

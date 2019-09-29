@@ -80,8 +80,13 @@ class IssuesController extends Controller
         return view('issues.show', ['issue' => $issue, 'projectId' => $id]);
     }
 
-    public function destroy(int $id)
+    public function destroy(int $id, int $issueId)
     {
+        $issue = Issue::where('id', $issueId)
+                        ->where('project_id', $id)
+                        ->firstOrFail();
+        $issue->delete();
 
+        return redirect()->route('issues.index', $id)->with('status', 'Issue successfully removed!');
     }
 }
