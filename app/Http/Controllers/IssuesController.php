@@ -46,14 +46,29 @@ class IssuesController extends Controller
         return redirect()->route('issues.index', $id)->with('status', 'Issue successfully created!');
     }
 
-    public function edit(int $id)
+    public function edit(int $id, int $issueId)
     {
+        $users = User::all();
+        $issue = Issue::where('id', $issueId)
+                        ->where('project_id', $id)
+                        ->firstOrFail();
 
+        return view('issues.edit', ['issue' => $issue, 'users' => $users]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id, int $issueId)
     {
+        $validatedData = $request->validate([
+            'subject' => 'required|max:255',
+            'description' => 'nullable',
+            'assigned_to_id' => 'nullable'
+        ]);
 
+        $issue = Issue::where('id', $issueId)
+                        ->where('project_id', $id)
+                        ->update($validatedData);
+
+        return redirect()->route('issues.show', [$id, $issueId])->with('status', 'Issue successfully updated!');
     }
 
     public function show(int $id, int $issueId)
