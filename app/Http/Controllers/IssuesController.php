@@ -56,9 +56,13 @@ class IssuesController extends Controller
 
     }
 
-    public function show(int $id)
+    public function show(int $id, int $issue_id)
     {
+        $issue = Issue::where('id', $issue_id)
+                        ->where('project_id', $id)
+                        ->firstOrFail();
 
+        return view('issues.show', ['issue' => $issue, 'project_id' => $id]);
     }
 
     public function destroy(int $id)
