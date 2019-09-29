@@ -20,12 +20,21 @@ class MilestonesController extends Controller
 
     public function new(Project $project)
     {
-
+        return view('milestones.new', ['project' => $project]);
     }
 
     public function create(Request $request, Project $project)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable'
+        ]);
 
+        $validatedData['project_id'] = $project->id;
+
+        $milestone = Milestone::create($validatedData);
+
+        return redirect()->route('milestones.index', $project)->with('status', 'Milestone successfully created!');
     }
 
     public function edit(Project $project, Milestone $milestone)
