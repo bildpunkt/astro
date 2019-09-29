@@ -39,12 +39,19 @@ class MilestonesController extends Controller
 
     public function edit(Project $project, Milestone $milestone)
     {
-
+        return view('milestones.edit', ['milestone' => $milestone]);
     }
 
     public function update(Request $request, Project $project, Milestone $milestone)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable'
+        ]);
 
+        $milestone->update($validatedData);
+
+        return redirect()->route('milestones.show', ['project' => $project, 'milestone' => $milestone])->with('status', 'Milestone successfully updated!');
     }
 
     public function show(Project $project, Milestone $milestone)
