@@ -21,6 +21,15 @@
                         </p>
                     @endif
 
+                    @if($issue->milestone)
+                        <p>
+                            Milestone:
+                            <a href="{{ route('milestones.show', [$issue->milestone->project, $issue->milestone]) }}">
+                                {{ $issue->milestone->name }}
+                            </a>
+                        </p>
+                    @endif
+
                     @if($issue->description)
                         <p>{{ $issue->description }}</p>
                     @endif
