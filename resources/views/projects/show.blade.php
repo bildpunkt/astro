@@ -5,8 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ $project->name }}</div>
+                @include('projects.navigation')
+
                 <div class="card-body">
+                    <h1>
+                        {{ $project->name }}
+                    </h1>
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
