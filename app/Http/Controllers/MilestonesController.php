@@ -61,6 +61,8 @@ class MilestonesController extends Controller
 
     public function destroy(Project $project, Milestone $milestone)
     {
+        $milestone->delete();
 
+        return redirect()->route('milestones.index', $project)->with('status', 'Milestone successfully removed!');
     }
 }

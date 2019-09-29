@@ -30,6 +30,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Milestone</button>
                     </form>
+                    <form method="POST" action="{{ route('milestones.destroy', [$milestone->project, $milestone]) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete Milestone</button>
+                    </form>
                 </div>
             </div>
         </div>
