@@ -43,7 +43,7 @@ class IssuesController extends Controller
 
         $issue = Issue::create($validatedData);
 
-        return redirect()->route('issues.index', $id)->with('status', 'Issue successfully created!');
+        return redirect()->route('issues.show', [$id, $issue->id])->with('status', 'Issue successfully created!');
     }
 
     public function edit(int $id, int $issueId)
