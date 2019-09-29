@@ -49,7 +49,7 @@ class MilestonesController extends Controller
 
     public function show(Project $project, Milestone $milestone)
     {
-
+        return view('milestones.show', ['milestone' => $milestone]);
     }
 
     public function destroy(Project $project, Milestone $milestone)
