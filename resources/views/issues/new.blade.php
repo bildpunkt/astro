@@ -36,6 +36,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issueMilestone">Assigned to:</label>
+                            <select class="custom-select" name="milestone_id">
+                                <option value="0" selected>None</option>
+                                @foreach ($project->milestones as $milestone)
+                                    <option value="{{ $milestone->id }}">{{ $milestone->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Create Issue</button>
                     </form>
                 </div>
