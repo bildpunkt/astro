@@ -15,7 +15,7 @@ class MilestonesController extends Controller
 
     public function index(Project $project)
     {
-
+        return view('milestones.index', ['project' => $project]);
     }
 
     public function new(Project $project)
