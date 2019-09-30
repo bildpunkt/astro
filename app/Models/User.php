@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Issues a user created
+     *
+     * @return \Illuminate\Database\Eloquent\Collection<\App\Models\Issue>
+     */
     public function issues()
     {
         return $this->hasMany('App\Models\Issue');
