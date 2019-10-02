@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\IssueUpdating;
 use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
@@ -47,4 +48,13 @@ class Issue extends Model
     {
         return $this->belongsTo('App\Models\Project');
     }
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'updating' => IssueUpdating::class
+    ];
 }
