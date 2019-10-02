@@ -50,6 +50,16 @@ class Issue extends Model
     }
 
     /**
+     * Revisions that belong to this issue
+     *
+     * @return \Illuminate\Database\Eloquent\Collection<\App\Models\IssueRevision>
+     */
+    public function revisions()
+    {
+        return $this->hasMany('App\Models\IssueRevision');
+    }
+
+    /**
      * The event map for the model.
      *
      * @var array
