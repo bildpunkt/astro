@@ -27,4 +27,14 @@ class IssueRevision extends Model
     {
         return $this->belongsTo('App\Models\Issue');
     }
+
+    /**
+     * Get the revisions changed attributes
+     *
+     * @return array
+     */
+    public function getAttributesAttribute($value)
+    {
+        return json_decode($value);
+    }
 }
