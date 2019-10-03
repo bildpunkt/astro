@@ -62,7 +62,7 @@ class IssuePrioritiesController extends Controller
      */
     public function edit(IssuePriority $issuePriority)
     {
-
+        return view('priorities.edit', ['priority' => $issuePriority]);
     }
 
     /**
@@ -72,7 +72,13 @@ class IssuePrioritiesController extends Controller
      */
     public function update(Request $request, IssuePriority $issuePriority)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
 
+        $issuePriority->update($validatedData);
+
+        return redirect()->route('priorities.index')->with('status', 'Priority successfully updated!');
     }
 
     /**
