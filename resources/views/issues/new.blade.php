@@ -45,6 +45,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issuePriority">Priority:</label>
+                            <select class="custom-select" name="priority_id">
+                                @foreach ($priorities as $priority)
+                                    <option value="{{ $priority->id }}">{{ $priority->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Create Issue</button>
                     </form>
                 </div>

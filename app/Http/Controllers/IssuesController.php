@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Issue;
+use App\Models\IssuePriority;
 use App\Models\Project;
 use App\Models\User;
 
@@ -42,8 +43,9 @@ class IssuesController extends Controller
     public function new(Project $project)
     {
         $users = User::all();
+        $priorities = IssuePriority::all();
 
-        return view('issues.new', ['project' => $project, 'users' => $users]);
+        return view('issues.new', ['project' => $project, 'users' => $users, 'priorities' => $priorities]);
     }
 
     /**
@@ -60,7 +62,8 @@ class IssuesController extends Controller
             'subject' => 'required|max:255',
             'description' => 'nullable',
             'assigned_to_id' => 'nullable',
-            'milestone_id' => 'nullable'
+            'milestone_id' => 'nullable',
+            'priority_id' => 'required'
         ]);
 
         $validatedData['author_id'] = Auth::user()->id;
@@ -82,8 +85,9 @@ class IssuesController extends Controller
     public function edit(Project $project, Issue $issue)
     {
         $users = User::all();
+        $priorities = IssuePriority::all();
 
-        return view('issues.edit', ['issue' => $issue, 'users' => $users]);
+        return view('issues.edit', ['issue' => $issue, 'users' => $users, 'priorities' => $priorities]);
     }
 
     /**
@@ -101,7 +105,8 @@ class IssuesController extends Controller
             'subject' => 'required|max:255',
             'description' => 'nullable',
             'assigned_to_id' => 'nullable',
-            'milestone_id' => 'nullable'
+            'milestone_id' => 'nullable',
+            'priority_id' => 'required'
         ]);
 
         $issue->update($validatedData);
