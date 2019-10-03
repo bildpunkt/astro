@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\IssueUpdating;
+use App\Models\IssuePriority;
 use App\Models\IssueRevision;
 use App\Models\Milestone;
 use App\Models\Project;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
-    protected $fillable = ['subject', 'description', 'assigned_to_id', 'author_id', 'project_id', 'milestone_id'];
+    protected $fillable = ['subject', 'description', 'assigned_to_id', 'author_id', 'project_id', 'milestone_id', 'priority_id'];
 
     /**
      * Author of the issue
@@ -41,6 +42,16 @@ class Issue extends Model
     public function milestone()
     {
         return $this->belongsTo(Milestone::class);
+    }
+
+    /**
+     * Priority of this issue
+     *
+     * @return \App\Models\IssuePriority
+     */
+    public function priority()
+    {
+        return $this->hasOne(IssuePriority::class, 'id', 'priority_id');
     }
 
     /**
