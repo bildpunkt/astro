@@ -33,10 +33,10 @@ class CreateIssueRevision
         foreach($model->getDirty() as $key => $value){
             $original = $model->getOriginal($key);
 
-            $changes['old'][$key] = $original;
+            $changes[$key]['old'] = $original;
 
             if ($original !== $value) {
-                $changes['new'][$key] = $value;
+                $changes[$key]['new'] = $value;
             }
         }
 
