@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\IssuePriority;
 use App\Models\Milestone;
 use App\Models\User;
 
@@ -41,6 +42,14 @@ class IssueRevisionAttributeTransformer
                     ];
 
                     unset($attributes['milestone_id']);
+                    break;
+                case 'priority_id':
+                    $attributes['priority'] = [
+                        'old' => IssuePriority::find($values['old']),
+                        'new' => IssuePriority::find($values['new'])
+                    ];
+
+                    unset($attributes['priority_id']);
                     break;
                 default:
             }
