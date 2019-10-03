@@ -19,7 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin.index');
+
+    Route::prefix('priorities')->group(function () {
+        Route::get('/', 'IssuePrioritiesController@index')->name('priorities.index');
+        Route::get('/new', 'IssuePrioritiesController@new')->name('priorities.new');
+        Route::post('/create', 'IssuePrioritiesController@create')->name('priorities.create');
+        Route::get('/{issuePriority}/edit', 'IssuePrioritiesController@edit')->name('priorities.edit');
+        Route::put('/{issuePriority}/update', 'IssuePrioritiesController@update')->name('priorities.update');
+        Route::delete('/{issuePriority}/destroy', 'IssuePrioritiesController@destroy')->name('priorities.destroy');
+    });
+});
 
 Route::prefix('projects')->group(function () {
     Route::get('/', 'ProjectsController@index')->name('projects.index');
