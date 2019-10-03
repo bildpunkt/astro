@@ -32,6 +32,8 @@
                 </p>
             @endif
 
+            <p>Priority: {{ $issue->priority->name }}</p>
+
             @if($issue->description)
                 <p>{{ $issue->description }}</p>
             @endif
