@@ -37,7 +37,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="issueMilestone">Assigned to:</label>
+                            <label for="issueMilestone">Milestone:</label>
                             <select class="custom-select" name="milestone_id">
                                 <option value="0" selected>None</option>
                                 @foreach ($project->milestones as $milestone)
