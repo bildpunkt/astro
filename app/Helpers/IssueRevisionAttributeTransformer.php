@@ -18,6 +18,14 @@ class IssueRevisionAttributeTransformer
     {
         foreach ($attributes as $attribute => $values) {
             switch ($attribute) {
+                case 'subject':
+                case 'description':
+                    $attributes[$attribute] = [
+                        'old' => htmlspecialchars($values['old']),
+                        'new' => htmlspecialchars($values['new'])
+                    ];
+
+                    break;
                 case 'assigned_to_id':
                     $attributes['assignee'] = [
                         'old' => User::find($values['old']),
