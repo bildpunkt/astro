@@ -24,7 +24,9 @@ class IssuePrioritiesController extends Controller
      */
     public function index()
     {
+        $priorities = IssuePriority::all();
 
+        return view('priorities.index', ['priorities' => $priorities]);
     }
 
     /**
