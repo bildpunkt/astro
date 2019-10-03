@@ -36,7 +36,7 @@ class IssuePrioritiesController extends Controller
      */
     public function new()
     {
-
+        return view('priorities.new');
     }
 
     /**
@@ -46,7 +46,13 @@ class IssuePrioritiesController extends Controller
      */
     public function create(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255'
+        ]);
 
+        IssuePriority::create($validatedData);
+
+        return redirect()->route('priorities.index')->with('status', 'Priority successfully created!');
     }
 
     /**

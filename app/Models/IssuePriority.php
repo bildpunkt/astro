@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class IssuePriority extends Model
 {
-    //
+    protected $fillable = ['name'];
 }
