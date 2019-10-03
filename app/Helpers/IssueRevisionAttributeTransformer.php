@@ -9,7 +9,35 @@ use App\Models\User;
 class IssueRevisionAttributeTransformer
 {
     /**
-     * Transforms *_id fields from an IssueRevision to model representations
+     * Mapping containing configuration on how fields should be transformed
+     *
+     * @var array
+     */
+    public static $transformMapping = [
+        'subject' => [
+            'method' => 'htmlspecialchars',
+            'target' => 'subject'
+        ],
+        'description' => [
+            'method' => 'htmlspecialchars',
+            'target' => 'description'
+        ],
+        'assigned_to_id' => [
+            'method' => User::class . '::find',
+            'target' => 'assignee'
+        ],
+        'milestone_id' => [
+            'method' => Milestone::class . '::find',
+            'target' => 'milestone'
+        ],
+        'priority_id' => [
+            'method' => IssuePriority::class . '::find',
+            'target' => 'priority'
+        ]
+    ];
+
+    /**
+     * Transforms fields from an IssueRevision
      *
      * @param array
      *
@@ -18,40 +46,15 @@ class IssueRevisionAttributeTransformer
     public static function transform(array $attributes)
     {
         foreach ($attributes as $attribute => $values) {
-            switch ($attribute) {
-                case 'subject':
-                case 'description':
-                    $attributes[$attribute] = [
-                        'old' => htmlspecialchars($values['old']),
-                        'new' => htmlspecialchars($values['new'])
-                    ];
+            $config = self::$transformMapping[$attribute];
 
-                    break;
-                case 'assigned_to_id':
-                    $attributes['assignee'] = [
-                        'old' => User::find($values['old']),
-                        'new' => User::find($values['new'])
-                    ];
+            $attributes[$config['target']] = [
+                'old' => $config['method']($values['old']),
+                'new' => $config['method']($values['new'])
+            ];
 
-                    unset($attributes['assigned_to_id']);
-                    break;
-                case 'milestone_id':
-                    $attributes['milestone'] = [
-                        'old' => Milestone::find($values['old']),
-                        'new' => Milestone::find($values['new'])
-                    ];
-
-                    unset($attributes['milestone_id']);
-                    break;
-                case 'priority_id':
-                    $attributes['priority'] = [
-                        'old' => IssuePriority::find($values['old']),
-                        'new' => IssuePriority::find($values['new'])
-                    ];
-
-                    unset($attributes['priority_id']);
-                    break;
-                default:
+            if ($attribute != $config['target']) {
+                unset($attributes[$attribute]);
             }
         }
 
