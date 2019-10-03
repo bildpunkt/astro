@@ -17,8 +17,8 @@
                 @foreach ($priorities as $priority)
                     <li class="list-group-item">
                         <div class="d-flex w-100 align-items-center justify-content-between">
-                            <p>{{ $priority->name }}</p>
-                            <a href="{{ route('priorities.edit') }}">Edit</a>
+                            <p class="m-0">{{ $priority->name }}</p>
+                            <a href="{{ route('priorities.edit', $priority) }}">Edit</a>
                         </div>
                     </li>
                 @endforeach
