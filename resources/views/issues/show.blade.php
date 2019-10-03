@@ -35,6 +35,18 @@
             @if($issue->description)
                 <p>{{ $issue->description }}</p>
             @endif
+
+            @foreach ($issue->revisions as $revision)
+                {{ $revision->user->name }} updated on {{ $revision->created_at }}
+
+                <ul>
+                    @foreach ($revision->attributes as $attribute => $values)
+                        <li>
+                            {!! $revision->change($attribute, $values) !!}
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
         </div>
     </div>
 </div>
