@@ -5,6 +5,7 @@ return [
     'attributes' => [
         'assignee' => 'Assignee',
         'description' => 'Description',
-        'milestone' => 'Milestone'
+        'milestone' => 'Milestone',
+        'priority' => 'Priority'
     ]
 ];
