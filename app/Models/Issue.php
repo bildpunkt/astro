@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use App\Events\IssueUpdating;
+use App\Models\IssueRevision;
+use App\Models\Milestone;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
@@ -16,7 +20,7 @@ class Issue extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\Models\User', 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     /**
@@ -26,7 +30,7 @@ class Issue extends Model
      */
     public function assignee()
     {
-        return $this->belongsTo('App\Models\User', 'assigned_to_id');
+        return $this->belongsTo(User::class, 'assigned_to_id');
     }
 
     /**
@@ -36,7 +40,7 @@ class Issue extends Model
      */
     public function milestone()
     {
-        return $this->belongsTo('App\Models\Milestone');
+        return $this->belongsTo(Milestone::class);
     }
 
     /**
@@ -46,7 +50,7 @@ class Issue extends Model
      */
     public function project()
     {
-        return $this->belongsTo('App\Models\Project');
+        return $this->belongsTo(Project::class);
     }
 
     /**
@@ -56,7 +60,7 @@ class Issue extends Model
      */
     public function revisions()
     {
-        return $this->hasMany('App\Models\IssueRevision');
+        return $this->hasMany(IssueRevision::class);
     }
 
     /**

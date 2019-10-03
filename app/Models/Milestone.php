@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Issue;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
 
 class Milestone extends Model
@@ -15,7 +17,7 @@ class Milestone extends Model
      */
     public function issues()
     {
-        return $this->hasMany('App\Models\Issue');
+        return $this->hasMany(Issue::class);
     }
 
     /**
@@ -25,6 +27,6 @@ class Milestone extends Model
      */
     public function project()
     {
-        return $this->belongsTo('App\Models\Project');
+        return $this->belongsTo(Project::class);
     }
 }

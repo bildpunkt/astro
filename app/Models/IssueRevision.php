@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\IssueRevisionAttributeTransformer;
-use App\Models\Milestone;
+use App\Models\Issue;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +18,7 @@ class IssueRevision extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -28,7 +28,7 @@ class IssueRevision extends Model
      */
     public function issue()
     {
-        return $this->belongsTo('App\Models\Issue');
+        return $this->belongsTo(Issue::class);
     }
 
     /**

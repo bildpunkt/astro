@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Issue;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,6 +56,6 @@ class User extends Authenticatable
      */
     public function issues()
     {
-        return $this->hasMany('App\Models\Issue');
+        return $this->hasMany(Issue::class);
     }
 }
