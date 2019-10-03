@@ -26,6 +26,12 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Priority</button>
                     </form>
+
+                    <form method="POST" action="{{ route('priorities.destroy', $priority) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete Priority</button>
+                    </form>
                 </div>
             </div>
         </div>

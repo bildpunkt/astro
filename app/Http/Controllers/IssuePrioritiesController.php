@@ -86,8 +86,10 @@ class IssuePrioritiesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy()
+    public function destroy(IssuePriority $issuePriority)
     {
+        $issuePriority->delete();
 
+        return redirect()->route('priorities.index')->with('status', 'Priority successfully removed!');
     }
 }
