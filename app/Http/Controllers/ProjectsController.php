@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectsController extends Controller
@@ -47,15 +48,9 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(ProjectRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'nullable',
-            'url' => 'nullable'
-        ]);
-
-        $project = Project::create($validatedData);
+        $project = Project::create($request->validated());
 
         return redirect()->route('projects.show', $project->id)->with('status', 'Project successfully created!');
     }
@@ -80,15 +75,9 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'nullable',
-            'url' => 'nullable'
-        ]);
-
-        Project::whereId($project->id)->update($validatedData);
+        $project->update($request->validated());
 
         return redirect()->route('projects.show', $project->id)->with('status', 'Project successfully updated!');
     }
