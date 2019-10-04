@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IssuePriorityRequest;
 use App\Models\IssuePriority;
 use Illuminate\Http\Request;
 
@@ -44,13 +45,9 @@ class IssuePrioritiesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request)
+    public function create(IssuePriorityRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255'
-        ]);
-
-        IssuePriority::create($validatedData);
+        IssuePriority::create($request->validated());
 
         return redirect()->route('priorities.index')->with('status', 'Priority successfully created!');
     }
@@ -70,13 +67,9 @@ class IssuePrioritiesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, IssuePriority $issuePriority)
+    public function update(IssuePriorityRequest $request, IssuePriority $issuePriority)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255'
-        ]);
-
-        $issuePriority->update($validatedData);
+        $issuePriority->update($request->validated());
 
         return redirect()->route('priorities.index')->with('status', 'Priority successfully updated!');
     }
