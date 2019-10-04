@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IssuePriorityRequest;
 use App\Models\IssuePriority;
-use Illuminate\Http\Request;
 
 class IssuePrioritiesController extends Controller
 {
@@ -43,6 +42,8 @@ class IssuePrioritiesController extends Controller
     /**
      * POST-action that creates a new issue priority
      *
+     * @param \App\Http\Requests\IssuePriorityRequest
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function create(IssuePriorityRequest $request)
@@ -64,6 +65,8 @@ class IssuePrioritiesController extends Controller
 
     /**
      * PUT-action to update an issue priorities properties
+     *
+     * @param \App\Http\Requests\IssuePriorityRequest
      *
      * @return \Illuminate\Http\RedirectResponse
      */

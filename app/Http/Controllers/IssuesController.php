@@ -7,7 +7,6 @@ use App\Models\Issue;
 use App\Models\IssuePriority;
 use App\Models\Project;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IssuesController extends Controller
@@ -52,7 +51,7 @@ class IssuesController extends Controller
     /**
      * POST-action that creates a new issue
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\IssueRequest
      * @param \App\Models\Project
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -88,7 +87,7 @@ class IssuesController extends Controller
     /**
      * PUT-action to update an issues properties
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\IssueRequest
      * @param \App\Models\Project
      * @param \App\Models\Issue
      *

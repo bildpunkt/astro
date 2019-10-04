@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectsController extends Controller
@@ -44,7 +43,7 @@ class ProjectsController extends Controller
     /**
      * POST-action that creates a new project
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\ProjectRequest
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -70,7 +69,7 @@ class ProjectsController extends Controller
     /**
      * PUT-action to update a projects properties
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\ProjectRequest
      * @param \App\Models\Project
      *
      * @return \Illuminate\Http\RedirectResponse

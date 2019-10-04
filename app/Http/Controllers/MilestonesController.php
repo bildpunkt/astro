@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MilestoneRequest;
 use App\Models\Project;
 use App\Models\Milestone;
-use Illuminate\Http\Request;
 
 class MilestonesController extends Controller
 {
@@ -46,7 +45,7 @@ class MilestonesController extends Controller
     /**
      * POST-action that creates a new milestone
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\MilestoneRequest
      * @param \App\Models\Project
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -78,7 +77,7 @@ class MilestonesController extends Controller
     /**
      * PUT-action to update a milestones properties
      *
-     * @param \Illuminate\Http\Request
+     * @param \App\Http\Requests\MilestoneRequest
      * @param \App\Models\Project
      * @param \App\Models\Milestone
      *
