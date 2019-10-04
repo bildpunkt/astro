@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\MilestoneRequest;
 use App\Models\Project;
 use App\Models\Milestone;
+use Illuminate\Http\Request;
 
 class MilestonesController extends Controller
 {
@@ -50,12 +51,9 @@ class MilestonesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request, Project $project)
+    public function create(MilestoneRequest $request, Project $project)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'nullable'
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['project_id'] = $project->id;
 
@@ -86,14 +84,9 @@ class MilestonesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Project $project, Milestone $milestone)
+    public function update(MilestoneRequest $request, Project $project, Milestone $milestone)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'nullable'
-        ]);
-
-        $milestone->update($validatedData);
+        $milestone->update($request->validated());
 
         return redirect()->route('milestones.show', ['project' => $project, 'milestone' => $milestone])->with('status', 'Milestone successfully updated!');
     }
