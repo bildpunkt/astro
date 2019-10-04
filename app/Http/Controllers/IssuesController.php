@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\IssueRequest;
 use App\Models\Issue;
 use App\Models\IssuePriority;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IssuesController extends Controller
 {
@@ -56,15 +57,9 @@ class IssuesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request, Project $project)
+    public function create(IssueRequest $request, Project $project)
     {
-        $validatedData = $request->validate([
-            'subject' => 'required|max:255',
-            'description' => 'nullable',
-            'assigned_to_id' => 'nullable',
-            'milestone_id' => 'nullable',
-            'priority_id' => 'required'
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['author_id'] = Auth::user()->id;
         $validatedData['project_id'] = $project->id;
@@ -99,17 +94,9 @@ class IssuesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Project $project, Issue $issue)
+    public function update(IssueRequest $request, Project $project, Issue $issue)
     {
-        $validatedData = $request->validate([
-            'subject' => 'required|max:255',
-            'description' => 'nullable',
-            'assigned_to_id' => 'nullable',
-            'milestone_id' => 'nullable',
-            'priority_id' => 'required'
-        ]);
-
-        $issue->update($validatedData);
+        $issue->update($request->validated());
 
         return redirect()->route('issues.show', [$project->id, $issue->id])->with('status', 'Issue successfully updated!');
     }
