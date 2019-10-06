@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\IssueUpdating;
+use App\Models\IssueCategory;
 use App\Models\IssuePriority;
 use App\Models\IssueRevision;
 use App\Models\IssueType;
@@ -21,7 +22,8 @@ class Issue extends Model
         'project_id',
         'milestone_id',
         'priority_id',
-        'type_id'
+        'type_id',
+        'category_id'
     ];
 
     /**
@@ -42,6 +44,16 @@ class Issue extends Model
     public function assignee()
     {
         return $this->belongsTo(User::class, 'assigned_to_id');
+    }
+
+    /**
+     * Category of this issue
+     *
+     * @return \App\Models\IssueCategory
+     */
+    public function category()
+    {
+        return $this->hasOne(IssueCategory::class, 'id', 'category_id');
     }
 
     /**
