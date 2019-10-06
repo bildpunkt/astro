@@ -45,7 +45,13 @@ class IssuesController extends Controller
         $users = User::all();
         $priorities = IssuePriority::all();
 
-        return view('issues.new', ['project' => $project, 'users' => $users, 'priorities' => $priorities]);
+        return view(
+                'issues.new',
+                [
+                    'project' => $project,
+                    'users' => $users,
+                    'priorities' => $priorities
+                ]);
     }
 
     /**
@@ -65,7 +71,9 @@ class IssuesController extends Controller
 
         $issue = Issue::create($validatedData);
 
-        return redirect()->route('issues.show', [$project->id, $issue->id])->with('status', 'Issue successfully created!');
+        return redirect()
+                ->route('issues.show', [$project->id, $issue->id])
+                ->with('status', 'Issue successfully created!');
     }
 
     /**
@@ -81,7 +89,13 @@ class IssuesController extends Controller
         $users = User::all();
         $priorities = IssuePriority::all();
 
-        return view('issues.edit', ['issue' => $issue, 'users' => $users, 'priorities' => $priorities]);
+        return view(
+                'issues.edit',
+                [
+                    'issue' => $issue,
+                    'users' => $users,
+                    'priorities' => $priorities
+                ]);
     }
 
     /**
@@ -97,7 +111,9 @@ class IssuesController extends Controller
     {
         $issue->update($request->validated());
 
-        return redirect()->route('issues.show', [$project->id, $issue->id])->with('status', 'Issue successfully updated!');
+        return redirect()
+                ->route('issues.show', [$project->id, $issue->id])
+                ->with('status', 'Issue successfully updated!');
     }
 
     /**
@@ -125,6 +141,8 @@ class IssuesController extends Controller
     {
         $issue->delete();
 
-        return redirect()->route('issues.index', $project->id)->with('status', 'Issue successfully removed!');
+        return redirect()
+                ->route('issues.index', $project->id)
+                ->with('status', 'Issue successfully removed!');
     }
 }
