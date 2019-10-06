@@ -73,7 +73,7 @@ class IssuesController extends Controller
 
         return redirect()
                 ->route('issues.show', [$project->id, $issue->id])
-                ->with('status', 'Issue successfully created!');
+                ->with('status', __('issues.messages.create.success'));
     }
 
     /**
@@ -113,7 +113,7 @@ class IssuesController extends Controller
 
         return redirect()
                 ->route('issues.show', [$project->id, $issue->id])
-                ->with('status', 'Issue successfully updated!');
+                ->with('status', __('issues.messages.update.success'));
     }
 
     /**
@@ -143,6 +143,6 @@ class IssuesController extends Controller
 
         return redirect()
                 ->route('issues.index', $project->id)
-                ->with('status', 'Issue successfully removed!');
+                ->with('status', __('issues.messages.destroy.success'));
     }
 }

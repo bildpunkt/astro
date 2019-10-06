@@ -7,5 +7,16 @@ return [
         'description' => 'Description',
         'milestone' => 'Milestone',
         'priority' => 'Priority'
+    ],
+    'messages' => [
+        'create' => [
+            'success' => 'Issue successfully created!'
+        ],
+        'update' => [
+            'success' => 'Issue successfully updated!'
+        ],
+        'destroy' => [
+            'success' => 'Issue successfully removed!'
+        ],
     ]
 ];
