@@ -52,7 +52,7 @@ class IssuePrioritiesController extends Controller
 
         return redirect()
                 ->route('priorities.index')
-                ->with('status', 'Priority successfully created!');
+                ->with('status', __('prorities.messages.create.success'));
     }
 
     /**
@@ -78,7 +78,7 @@ class IssuePrioritiesController extends Controller
 
         return redirect()
                 ->route('priorities.index')
-                ->with('status', 'Priority successfully updated!');
+                ->with('status', __('prorities.messages.update.success'));
     }
 
     /**
@@ -92,6 +92,6 @@ class IssuePrioritiesController extends Controller
 
         return redirect()
                 ->route('priorities.index')
-                ->with('status', 'Priority successfully removed!');
+                ->with('status', __('prorities.messages.destroy.success'));
     }
 }
