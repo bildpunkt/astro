@@ -36,6 +36,7 @@ class IssueTypesController extends Controller
      */
     public function new()
     {
+        return view('types.new');
     }
 
     /**
@@ -45,6 +46,11 @@ class IssueTypesController extends Controller
      */
     public function create(IssueTypeRequest $request)
     {
+        IssueType::create($request->validated());
+
+        return redirect()
+                ->route('types.index')
+                ->with('status', __('types.messages.create.success'));
     }
 
     /**
