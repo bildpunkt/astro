@@ -58,7 +58,9 @@ class MilestonesController extends Controller
 
         $milestone = Milestone::create($validatedData);
 
-        return redirect()->route('milestones.show', [$project->id, $milestone->id])->with('status', 'Milestone successfully created!');
+        return redirect()
+                ->route('milestones.show', [$project->id, $milestone->id])
+                ->with('status', 'Milestone successfully created!');
     }
 
     /**
@@ -87,7 +89,9 @@ class MilestonesController extends Controller
     {
         $milestone->update($request->validated());
 
-        return redirect()->route('milestones.show', ['project' => $project, 'milestone' => $milestone])->with('status', 'Milestone successfully updated!');
+        return redirect()
+                ->route('milestones.show', ['project' => $project, 'milestone' => $milestone])
+                ->with('status', 'Milestone successfully updated!');
     }
 
     /**
@@ -115,6 +119,8 @@ class MilestonesController extends Controller
     {
         $milestone->delete();
 
-        return redirect()->route('milestones.index', $project)->with('status', 'Milestone successfully removed!');
+        return redirect()
+                ->route('milestones.index', $project)
+                ->with('status', 'Milestone successfully removed!');
     }
 }
