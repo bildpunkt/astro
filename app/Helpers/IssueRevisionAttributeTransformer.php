@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\IssueCategory;
 use App\Models\IssuePriority;
 use App\Models\IssueType;
 use App\Models\Milestone;
@@ -38,6 +39,10 @@ class IssueRevisionAttributeTransformer
         'type_id' => [
             'method' => IssueType::class . '::find',
             'target' => 'type'
+        ],
+        'category_id' => [
+            'method' => IssueCategory::class . '::find',
+            'target' => 'category'
         ]
     ];
 
