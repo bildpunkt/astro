@@ -39,6 +39,15 @@ Route::prefix('admin')->group(function () {
         Route::put('/{issueType}/update', 'IssueTypesController@update')->name('types.update');
         Route::delete('/{issueType}/destroy', 'IssueTypesController@destroy')->name('types.destroy');
     });
+
+    Route::prefix('categories')->group(function () {
+        Route::get('/', 'IssueCategoriesController@index')->name('categories.index');
+        Route::get('/new', 'IssueCategoriesController@new')->name('categories.new');
+        Route::post('/create', 'IssueCategoriesController@create')->name('categories.create');
+        Route::get('/{issueCategory}/edit', 'IssueCategoriesController@edit')->name('categories.edit');
+        Route::put('/{issueCategory}/update', 'IssueCategoriesController@update')->name('categories.update');
+        Route::delete('/{issueCategory}/destroy', 'IssueCategoriesController@destroy')->name('categories.destroy');
+    });
 });
 
 Route::prefix('projects')->group(function () {
