@@ -5,10 +5,13 @@ namespace App\Models;
 use App\Models\Issue;
 use App\Models\Milestone;
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'description', 'url'];
+    use NodeTrait;
+
+    protected $fillable = ['name', 'description', 'url', 'parent_id'];
 
     /**
      * Issues that are part of a project
