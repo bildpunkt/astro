@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Request\IssueCategoryRequest;
+use App\Http\Requests\IssueCategoryRequest;
 use App\Models\IssueCategory;
 
 class IssueCategoriesController extends Controller
@@ -36,6 +36,7 @@ class IssueCategoriesController extends Controller
      */
     public function new()
     {
+        return view('categories.new');
     }
 
     /**
@@ -45,6 +46,11 @@ class IssueCategoriesController extends Controller
      */
     public function create(IssueCategoryRequest $request)
     {
+        IssueCategory::create($request->validated());
+
+        return redirect()
+                ->route('categories.index')
+                ->with('status', __('categories.messages.create.success'));
     }
 
     /**
