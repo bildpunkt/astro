@@ -26,7 +26,8 @@ class ProjectRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'description' => 'nullable',
-            'url' => 'nullable'
+            'url' => 'nullable',
+            'parent_id' => 'nullable'
         ];
     }
 }
