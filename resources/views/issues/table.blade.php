@@ -16,7 +16,7 @@
                 <td>{{ $issue->type->name }}</td>
                 <td>{{ $issue->priority->name }}</td>
                 <td>
-                    <a href="{{ route('issues.show', [$project, $issue]) }}">
+                    <a href="{{ route('issues.show', [$issue->project, $issue]) }}">
                         {{ $issue->subject }}
                     </a>
                 </td>
