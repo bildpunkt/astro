@@ -30,6 +30,15 @@ Route::prefix('admin')->group(function () {
         Route::put('/{issuePriority}/update', 'IssuePrioritiesController@update')->name('priorities.update');
         Route::delete('/{issuePriority}/destroy', 'IssuePrioritiesController@destroy')->name('priorities.destroy');
     });
+
+    Route::prefix('types')->group(function () {
+        Route::get('/', 'IssueTypesController@index')->name('types.index');
+        Route::get('/new', 'IssueTypesController@new')->name('types.new');
+        Route::post('/create', 'IssueTypesController@create')->name('types.create');
+        Route::get('/{issueType}/edit', 'IssueTypesController@edit')->name('types.edit');
+        Route::put('/{issueType}/update', 'IssueTypesController@update')->name('types.update');
+        Route::delete('/{issueType}/destroy', 'IssueTypesController@destroy')->name('types.destroy');
+    });
 });
 
 Route::prefix('projects')->group(function () {
