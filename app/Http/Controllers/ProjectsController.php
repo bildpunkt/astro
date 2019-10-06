@@ -55,7 +55,7 @@ class ProjectsController extends Controller
 
         return redirect()
                 ->route('projects.show', $project->id)
-                ->with('status', 'Project successfully created!');
+                ->with('status', __('projects.messages.create.success'));
     }
 
     /**
@@ -86,7 +86,7 @@ class ProjectsController extends Controller
 
         return redirect()
                 ->route('projects.show', $project->id)
-                ->with('status', 'Project successfully updated!');
+                ->with('status', __('projects.messages.update.success'));
     }
 
     /**
@@ -114,6 +114,6 @@ class ProjectsController extends Controller
 
         return redirect()
                 ->route('projects.index')
-                ->with('status', 'Project successfully removed!');
+                ->with('status', __('projects.messages.destroy.success'));
     }
 }
