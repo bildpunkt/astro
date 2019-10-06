@@ -24,6 +24,9 @@ class IssueCategoriesController extends Controller
      */
     public function index()
     {
+        $categories = IssueCategory::all();
+
+        return view('categories.index', ['categories' => $categories]);
     }
 
     /**
