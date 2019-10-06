@@ -15,15 +15,34 @@
                 <a href="{{ route('issues.new', $project) }}" class="btn btn-primary">New Issue</a>
             </div>
         </div>
-        <ul class="list-group list-group-flush">
-            @foreach ($project->issues as $issue)
-                <li class="list-group-item">
-                    <a href="{{ route('issues.show', [$project, $issue]) }}">
-                        {{ $issue->subject }}
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+        <table class="table table-responsive-sm mb-0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th>Priority</th>
+                    <th>Subject</th>
+                    <th>Assigned to</th>
+                    <th>Milestone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($project->issues as $issue)
+                    <tr>
+                        <td>{{ $issue->id }}</td>
+                        <td>{{ $issue->type->name }}</td>
+                        <td>{{ $issue->priority->name }}</td>
+                        <td>
+                            <a href="{{ route('issues.show', [$project, $issue]) }}">
+                                {{ $issue->subject }}
+                            </a>
+                        </td>
+                        <td>{{ optional($issue->assignee)->name }}</td>
+                        <td>{{ optional($issue->milestone)->name }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection
