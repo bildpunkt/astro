@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IssueRequest;
 use App\Models\Issue;
 use App\Models\IssuePriority;
+use App\Models\IssueType;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -44,13 +45,15 @@ class IssuesController extends Controller
     {
         $users = User::all();
         $priorities = IssuePriority::all();
+        $types = IssueType::all();
 
         return view(
                 'issues.new',
                 [
                     'project' => $project,
                     'users' => $users,
-                    'priorities' => $priorities
+                    'priorities' => $priorities,
+                    'types' => $types
                 ]);
     }
 
@@ -88,13 +91,15 @@ class IssuesController extends Controller
     {
         $users = User::all();
         $priorities = IssuePriority::all();
+        $types = IssueType::all();
 
         return view(
                 'issues.edit',
                 [
                     'issue' => $issue,
                     'users' => $users,
-                    'priorities' => $priorities
+                    'priorities' => $priorities,
+                    'types' => $types
                 ]);
     }
 

@@ -53,6 +53,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issueType">Type:</label>
+                            <select class="custom-select" name="type_id">
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Create Issue</button>
                     </form>
                 </div>
