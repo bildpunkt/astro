@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\IssueRequest;
 use App\Models\Issue;
+use App\Models\IssueCategory;
 use App\Models\IssuePriority;
 use App\Models\IssueType;
 use App\Models\Project;
@@ -46,6 +47,7 @@ class IssuesController extends Controller
         $users = User::all();
         $priorities = IssuePriority::all();
         $types = IssueType::all();
+        $categories = IssueCategory::all();
 
         return view(
                 'issues.new',
@@ -53,7 +55,8 @@ class IssuesController extends Controller
                     'project' => $project,
                     'users' => $users,
                     'priorities' => $priorities,
-                    'types' => $types
+                    'types' => $types,
+                    'categories' => $categories
                 ]);
     }
 
@@ -92,6 +95,7 @@ class IssuesController extends Controller
         $users = User::all();
         $priorities = IssuePriority::all();
         $types = IssueType::all();
+        $categories = IssueCategory::all();
 
         return view(
                 'issues.edit',
@@ -99,7 +103,8 @@ class IssuesController extends Controller
                     'issue' => $issue,
                     'users' => $users,
                     'priorities' => $priorities,
-                    'types' => $types
+                    'types' => $types,
+                    'categories' => $categories
                 ]);
     }
 

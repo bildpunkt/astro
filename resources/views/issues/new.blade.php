@@ -61,6 +61,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issueCategory">Category:</label>
+                            <select class="custom-select" name="category_id">
+                                <option value="0" selected>None</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Create Issue</button>
                     </form>
                 </div>

@@ -62,6 +62,15 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="issueCategory">Category:</label>
+                            <select class="custom-select" name="category_id">
+                                <option value="0">None</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ optional($issue->category)->id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Edit Issue</button>
                     </form>
                     <form method="POST" action="{{ route('issues.destroy', [$issue->project, $issue]) }}">

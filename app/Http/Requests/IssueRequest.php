@@ -29,7 +29,8 @@ class IssueRequest extends FormRequest
             'assigned_to_id' => 'nullable',
             'milestone_id' => 'nullable',
             'priority_id' => 'required',
-            'type_id' => 'required'
+            'type_id' => 'required',
+            'category_id' => 'nullable'
         ];
     }
 }
