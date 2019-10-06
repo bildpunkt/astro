@@ -50,7 +50,9 @@ class IssuePrioritiesController extends Controller
     {
         IssuePriority::create($request->validated());
 
-        return redirect()->route('priorities.index')->with('status', 'Priority successfully created!');
+        return redirect()
+                ->route('priorities.index')
+                ->with('status', 'Priority successfully created!');
     }
 
     /**
@@ -74,7 +76,9 @@ class IssuePrioritiesController extends Controller
     {
         $issuePriority->update($request->validated());
 
-        return redirect()->route('priorities.index')->with('status', 'Priority successfully updated!');
+        return redirect()
+                ->route('priorities.index')
+                ->with('status', 'Priority successfully updated!');
     }
 
     /**
@@ -86,6 +90,8 @@ class IssuePrioritiesController extends Controller
     {
         $issuePriority->delete();
 
-        return redirect()->route('priorities.index')->with('status', 'Priority successfully removed!');
+        return redirect()
+                ->route('priorities.index')
+                ->with('status', 'Priority successfully removed!');
     }
 }
