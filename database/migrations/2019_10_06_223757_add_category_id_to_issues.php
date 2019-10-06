@@ -16,7 +16,7 @@ class AddCategoryIdToIssues extends Migration
         Schema::table('issues', function (Blueprint $table) {
             $table
                 ->bigInteger('category_id')
-                ->nullable(false);
+                ->nullable();
         });
     }
 
