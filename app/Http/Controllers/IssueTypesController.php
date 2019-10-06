@@ -60,6 +60,7 @@ class IssueTypesController extends Controller
      */
     public function edit(IssueType $issueType)
     {
+        return view('types.edit', ['type' => $issueType]);
     }
 
     /**
@@ -69,6 +70,11 @@ class IssueTypesController extends Controller
      */
     public function update(IssueTypeRequest $request, IssueType $issueType)
     {
+        $issueType->update($request->validated());
+
+        return redirect()
+                ->route('types.index')
+                ->with('status', __('types.messages.update.success'));
     }
 
     /**
