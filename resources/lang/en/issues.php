@@ -6,7 +6,8 @@ return [
         'assignee' => 'Assignee',
         'description' => 'Description',
         'milestone' => 'Milestone',
-        'priority' => 'Priority'
+        'priority' => 'Priority',
+        'type' => 'Type'
     ],
     'messages' => [
         'create' => [
