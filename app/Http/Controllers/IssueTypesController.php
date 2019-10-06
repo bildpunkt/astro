@@ -24,6 +24,9 @@ class IssueTypesController extends Controller
      */
     public function index()
     {
+        $types = IssueType::all();
+
+        return view('types.index', ['types' => $types]);
     }
 
     /**
