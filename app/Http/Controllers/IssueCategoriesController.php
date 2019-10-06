@@ -84,5 +84,10 @@ class IssueCategoriesController extends Controller
      */
     public function destroy(IssueCategory $issueCategory)
     {
+        $issueCategory->delete();
+
+        return redirect()
+                ->route('categories.index')
+                ->with('status', __('categories.messages.destroy.success'));
     }
 }

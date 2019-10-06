@@ -7,6 +7,9 @@ return [
         ],
         'update' => [
             'success' => 'Category successfully updated!'
+        ],
+        'destroy' => [
+            'success' => 'Category successfully removed!'
         ]
     ]
 ];
