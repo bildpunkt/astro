@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\IssuePriority;
+use App\Models\IssueType;
 use App\Models\Milestone;
 use App\Models\User;
 
@@ -33,6 +34,10 @@ class IssueRevisionAttributeTransformer
         'priority_id' => [
             'method' => IssuePriority::class . '::find',
             'target' => 'priority'
+        ],
+        'type_id' => [
+            'method' => IssueType::class . '::find',
+            'target' => 'type'
         ]
     ];
 
