@@ -19,11 +19,13 @@
             @foreach ($project->milestones as $milestone)
                 <li class="list-group-item">
                     <a href="{{ route('milestones.show', [$project, $milestone]) }}">
-                        {{ $milestone->name }}
+                        <h2>{{ $milestone->name }}</h2>
                     </a>
                     @if ($milestone->description)
                         <p>{{ $milestone->description }}</p>
                     @endif
+
+                    @include('issues.table', ['issues' => $milestone->issues, 'additionalClasses' => ['table-bordered']])
                 </li>
             @endforeach
         </ul>
