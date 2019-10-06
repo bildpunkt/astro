@@ -37,7 +37,9 @@ class ProjectsController extends Controller
      */
     public function new()
     {
-        return view('projects.new');
+        $projects = Project::all();
+
+        return view('projects.new', ['projects' => $projects]);
     }
 
     /**
@@ -63,7 +65,9 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', ['project' => $project]);
+        $projects = Project::all();
+
+        return view('projects.edit', ['project' => $project, 'projects' => $projects]);
     }
 
     /**

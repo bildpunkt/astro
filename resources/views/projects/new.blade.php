@@ -31,6 +31,15 @@
                             <label for="projectUrl">Project URL:</label>
                             <input type="url" class="form-control" id="projectUrl" name="url"/>
                         </div>
+                        <div class="form-group">
+                            <label for="projectParent">Parent Project:</label>
+                            <select class="custom-select" name="parent_id">
+                                <option value="0" selected>None</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary">Create Project</button>
                     </form>
                 </div>
