@@ -60,6 +60,7 @@ class IssueCategoriesController extends Controller
      */
     public function edit(IssueCategory $issueCategory)
     {
+        return view('categories.edit', ['category' => $issueCategory]);
     }
 
     /**
@@ -69,6 +70,11 @@ class IssueCategoriesController extends Controller
      */
     public function update(IssueCategoryRequest $request, IssueCategory $issueCategory)
     {
+        $issueCategory->update($request->validated());
+
+        return redirect()
+                ->route('categories.index')
+                ->with('status', __('categories.messages.update.success'));
     }
 
     /**
