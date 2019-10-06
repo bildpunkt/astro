@@ -7,7 +7,8 @@ return [
         'description' => 'Description',
         'milestone' => 'Milestone',
         'priority' => 'Priority',
-        'type' => 'Type'
+        'type' => 'Type',
+        'category' => 'Category'
     ],
     'messages' => [
         'create' => [
