@@ -24,7 +24,8 @@ class CreateProjectsTable extends Migration
                 ->nullable();
             $table
                 ->string('url')
-                ->default('');
+                ->default('')
+                ->nullable();
             $table->timestamps();
         });
     }
