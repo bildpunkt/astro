@@ -60,7 +60,7 @@ class MilestonesController extends Controller
 
         return redirect()
                 ->route('milestones.show', [$project->id, $milestone->id])
-                ->with('status', 'Milestone successfully created!');
+                ->with('status', __('milestones.messages.create.success'));
     }
 
     /**
@@ -91,7 +91,7 @@ class MilestonesController extends Controller
 
         return redirect()
                 ->route('milestones.show', ['project' => $project, 'milestone' => $milestone])
-                ->with('status', 'Milestone successfully updated!');
+                ->with('status', __('milestones.messages.update.success'));
     }
 
     /**
@@ -121,6 +121,6 @@ class MilestonesController extends Controller
 
         return redirect()
                 ->route('milestones.index', $project)
-                ->with('status', 'Milestone successfully removed!');
+                ->with('status', __('milestones.messages.destroy.success'));
     }
 }
