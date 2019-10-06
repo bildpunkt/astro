@@ -65,7 +65,7 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        $projects = Project::all();
+        $projects = Project::where('id', '!=', $project->id)->get();
 
         return view('projects.edit', ['project' => $project, 'projects' => $projects]);
     }
