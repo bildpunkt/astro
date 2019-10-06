@@ -30,6 +30,12 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Edit Type</button>
                     </form>
+
+                    <form method="POST" action="{{ route('types.destroy', $type) }}">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete Type</button>
+                    </form>
                 </div>
             </div>
         </div>

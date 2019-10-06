@@ -7,6 +7,9 @@ return [
         ],
         'update' => [
             'success' => 'Type successfully updated!'
+        ],
+        'destroy' => [
+            'success' => 'Type successfully removed!'
         ]
     ]
 ];

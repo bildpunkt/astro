@@ -82,7 +82,12 @@ class IssueTypesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(IssueTypeRequest $issueType)
+    public function destroy(IssueType $issueType)
     {
+        $issueType->delete();
+
+        return redirect()
+                ->route('types.index')
+                ->with('status', __('types.messages.destroy.success'));
     }
 }
