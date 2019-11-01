@@ -53,7 +53,7 @@
                         @else
                             @admin
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.index') }}">{{ __('Admin') }}</a>
+                                    <a class="nav-link" href="{{ route('admin.index') }}">{{ __('admin.title') }}</a>
                                 </li>
                             @endadmin
                             <li class="nav-item dropdown">
